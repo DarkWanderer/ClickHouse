@@ -46,9 +46,13 @@ void DatabaseWithDictionaries::attachDictionary(const String & dictionary_name, 
             throw Exception(ErrorCodes::DICTIONARY_ALREADY_EXISTS,
                             "Dictionary {} already exists.", dict_id.getNameForLogs());
 
+        bool uuid_locked = false;
         /// Attach the dictionary as table too.
         try
         {
+            DatabaseCatalog::instance().addUUIDMapping(dict_id.uuid);
+            uuid_locked = true;
+
             /// TODO Make StorageDictionary an owner of IDictionary objects.
             /// All DDL operations with dictionaries will work with StorageDictionary table,
             /// and StorageDictionary will be responsible for loading of DDL dictionaries.
@@ -66,6 +70,8 @@ void DatabaseWithDictionaries::attachDictionary(const String & dictionary_name, 
         catch (...)
         {
             dictionaries.erase(it);
+            if (uuid_locked)
+                DatabaseCatalog::instance().removeUUIDMappingFinally(dict_id.uuid);
             throw;
         }
     }
