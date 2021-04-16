@@ -50,8 +50,11 @@ void DatabaseWithDictionaries::attachDictionary(const String & dictionary_name, 
         /// Attach the dictionary as table too.
         try
         {
-            DatabaseCatalog::instance().addUUIDMapping(dict_id.uuid);
-            uuid_locked = true;
+            if (dict_id.uuid != UUIDHelpers::Nil)
+            {
+                DatabaseCatalog::instance().addUUIDMapping(dict_id.uuid);
+                uuid_locked = true;
+            }
 
             /// TODO Make StorageDictionary an owner of IDictionary objects.
             /// All DDL operations with dictionaries will work with StorageDictionary table,
