@@ -11,7 +11,7 @@ cffi==1.16.0
 charset-normalizer==3.3.2
 click==8.1.7
 codespell==2.2.1
-cryptography==43.0.1
+cryptography==46.0.6
 Deprecated==1.2.14
 dill==0.3.8
 flake8==4.0.1
@@ -38,7 +38,7 @@ python-dateutil==2.9.0.post0
 python-magic==0.4.24
 PyYAML==6.0.1
 rapidfuzz==3.9.3
-requests==2.32.3
+requests==2.33.0
 s3transfer==0.10.1
 setuptools==70.0.0
 six==1.16.0

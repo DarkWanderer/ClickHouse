@@ -22,7 +22,7 @@ cffi==1.16.0
 charset-normalizer==3.3.2
 click==8.1.7
 confluent-kafka==2.3.0
-cryptography==42.0.0
+cryptography==46.0.6
 datacompy==0.7.3
 dbus-python==1.2.18
 delta-spark==2.3.0
@@ -86,7 +86,7 @@ python-dateutil==2.9.0.post0
 pytz==2023.3.post1
 redis==5.0.1
 requests-kerberos==0.14.0
-requests==2.31.0
+requests==2.33.0
 s3transfer==0.10.1
 setuptools==70.0.0
 simplejson==3.19.2
